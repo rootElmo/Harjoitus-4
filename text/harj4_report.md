@@ -23,7 +23,11 @@ Kuinka ollakkaan, kyseinen paketti löytyi!
 
 ![scrshot1](../images/scrshot001.png)
 
+Voin siis luoda pelin asennusta ja säätämistä varten salt-modulin ilman 'cmd.run' tmv. kikkailuja.
 
+Loin uuden kansion "**openttd**" kansioon **/srv/salt**, ja loin init.sls tiedoston kansioon tilaa varten.
+
+![scrshot2](../images/scrshot002.png)
 
 ## Lähteet
 
