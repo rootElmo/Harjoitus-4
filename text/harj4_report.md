@@ -46,6 +46,8 @@ En ollut aivan varma siitä, mihin OpenTTD luo tiedostonsa asennuksen yhteydess�
 
 	sudo salt 'e006' cmd.run 'find / -printf "%T+ %p\n" | sort | grep openttd'
 
+![scrshot4](../images/scrshot004.png)
+
 #### *Selvitin pienen tauon jälkeen seuraavassa osiossa kuvaillun ongelman SSH:n käytön suhteen. Pidän sen kuitenkin sellaisenaan raportissa*
 
 *Pitkähköstä tulosteesta selvisi, että iso määrä tiedostoja oli luotu kohteeseen* ***/usr/share/games/openttd***. *Tässä vaiheessa avaisin SSH-yhteyden orja-koneeseen, mutta aikaisemmista yrityksistäni huolimatta en ole saanut SSH:lla yhteyttä oman koneeni ulkopuolisiin koneisiin, jotka ovat samassa verkossa. Oletan vian olevan asuntoni reitittimessä.*
@@ -61,6 +63,21 @@ tulostaa terminaali ylensä jotain ja näin ollen SSH-yhteyden saamisen pitäisi
 	slave $ sudo apt-get purge openssh-client
 
 ja päätin tehdä openssh-clientin asennuksesta oman tilan herrakoneella.
+
+Prosessi meni aluksi hyvin pitkälti samalla tavalla, kuin OpenTTD:tä asennettaessa. Tällä kertaa _init.sls_ sijaitsi vain kansiossa **/srv/salt/openssh**.
+
+init.sls:
+
+	openssh-client:
+	  pkg.installed
+
+Seuraavaksi ajoin tilan aktiiviseksi:
+
+	master $ sudo salt 'e006' state.apply openssh
+
+Tila aktivoitui onnistuneesti!
+
+![scrshot5](../images/scrshot005.png)
 
 ## Lähteet
 
