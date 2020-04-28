@@ -115,6 +115,45 @@ Ajattelin, että voisin luoda tuon kansion tilaan, ja puskea sen orja-koneelle c
 
 Tein seuraavaksi muutoksia _init.sls_-tiedostoon:
 
+openttd:
+  pkg.installed
+
+/home/elmo/.openttd/:
+  file.directory:
+    - source: salt://openttd/config
+    - user: elmo
+    - group: elmo
+    - mode: 775
+    - recurse:
+      - user
+      - group
+      - mode
+
+Ajoin tilan aktiiviseksi ja salt ilmoitti onnistumisesta!
+
+![scrshot8](../images/scrshot008.png)
+
+Kävin SSH-yhteydellä orja-koneella, kansio ***~/.openttd*** löytyi, mutta mitään ei ollut sen sisällä. Pienen dokumentaation lueskelun jälkeen tajusin, että minun olisi käytettävä **file.recurse**:a, jotta kansion sisältökin kopioituisi. Sain myös virheilmoituksen, kun muutin **file.recurse**:n suoraan **file.directory**:n tilalle sls-tiedostossa.
+
+![scrshot9](..images/scrshot009.png)
+
+Tein tarvittavat muutokset tilaan, ja ajoin sen onnistuneesti!
+
+init.sls:
+
+	openttd:
+	  pkg.installed
+	
+	/home/elmo/.openttd/:
+	  file.recurse:
+	    - source: salt://openttd/config
+	    - user: elmo
+	    - group: elmo
+	    - dir_mode: 775
+	    - file_mode: 775
+
+
+
 ## Lähteet
 
 Tero Karvinen: http://terokarvinen.com/2020/configuration-managment-systems-palvelinten-hallinta-ict4tn022-spring-2020/
