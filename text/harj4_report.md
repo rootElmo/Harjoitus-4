@@ -46,9 +46,11 @@ En ollut aivan varma siitä, mihin OpenTTD luo tiedostonsa asennuksen yhteydess�
 
 	sudo salt 'e006' cmd.run 'find / -printf "%T+ %p\n" | sort | grep openttd'
 
-Pitkähköstä tulosteesta selvisi, että iso määrä tiedostoja oli luotu kohteeseen **/usr/share/games/openttd**. Tässä vaiheessa avaisin SSH-yhteyden orja-koneeseen, mutta aikaisemmista yrityksistäni huolimatta en ole saanut SSH:lla yhteyttä oman koneeni ulkopuolisiin koneisiin, jotka ovat samassa verkossa. Oletan vian olevan asuntoni reitittimessä.
+#### *Selvitin pienen tauon jälkeen seuraavassa osiossa kuvaillun ongelman SSH:n käytön suhteen. Pidän sen kuitenkin sellaisenaan raportissa*
 
-Emuloin SSH:ta käymällä katselemassa pöytäkoneeltani käsin orja-koneen kansioita.
+*Pitkähköstä tulosteesta selvisi, että iso määrä tiedostoja oli luotu kohteeseen **/usr/share/games/openttd**. Tässä vaiheessa avaisin SSH-yhteyden orja-koneeseen, mutta aikaisemmista yrityksistäni huolimatta en ole saanut SSH:lla yhteyttä oman koneeni ulkopuolisiin koneisiin, jotka ovat samassa verkossa. Oletan vian olevan asuntoni reitittimessä.
+
+Emuloin SSH:ta käymällä katselemassa pöytäkoneeltani käsin orja-koneen kansioita.*
 
 
 ## Lähteet
