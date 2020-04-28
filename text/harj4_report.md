@@ -172,7 +172,25 @@ Kävin noutamassa sftp:llä _openttd.cfg_-tiedoston orja-koneel _~/.config/opent
 
 Ajon tilan aktiiviseksi ja salt ilmoitti onnistumisesta. Seuraavaksi teen muutoksen _openttd.cfg_-tiedostoon herra-koneella ja ajan tilan uudestaan. Salt ilmoitti, että muutos tiedostoon on tapahtunut ja että muutos on viety onnistuneesti orja-koneelle. Muutin _openttd.cfg_-tiedostosta kohdan **fullscreen = false** muotoon **fullscreen = true**.
 
+Seuraavaksi etsin openssh-serverin config-tiedoston mahdollista sijaintia
 
+	master $ sudo salt 'e006' cmd.run 'find /etc/ | grep ssh'
+
+Salt palautti vastauksena listan. Listalla oli ***/etc/ssh/sshd_config***. Päätin hakea tämän herra-koneelle sftp:n avulla. Vein config-tiedoston kansioon ***/srv/salt/openssh***ja tein siihen muutoksia:
+
+	openssh-server:
+	  pkg.installed
+	
+	sshd.service:
+	  service.running: []
+
+Ajoin openssh-tilan aktiiviseksi
+
+	master $ sudo salt 'e006' state.apply openssh
+
+ja salt ilmoitti onnistumisesta!
+
+![scrshot11](../images/scrshot011.png)
 
 ## Lähteet
 
