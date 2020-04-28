@@ -54,7 +54,7 @@ En ollut aivan varma siitä, mihin OpenTTD luo tiedostonsa asennuksen yhteydess�
 
 *Emuloin SSH:ta käymällä katselemassa pöytäkoneeltani käsin orja-koneen kansioita.*
 
-Sain loppujen lopuksi SSH-yhteyden orja-koneeseen. Asensin openssh-clientin orjakoneelle käsin ja kokeilin herra-koneelta kirjautumista, joka toimi. Olin olettanut, että kun komennolla
+Sain loppujen lopuksi SSH-yhteyden orja-koneeseen. Asensin openssh-serverin orjakoneelle käsin ja kokeilin herra-koneelta kirjautumista, joka toimi. Olin olettanut, että kun komennolla
 
 	slave $ which ssh
 
@@ -78,6 +78,17 @@ Seuraavaksi ajoin tilan aktiiviseksi:
 Tila aktivoitui onnistuneesti!
 
 ![scrshot5](../images/scrshot005.png)
+
+Seuraavaksi pyysin orja-koneen IP-osoitteen saltin kautta ja yritin SSH-yhteyttä.
+
+	master $ sudo salt 'e006' cmd.run 'hostname -I'
+	master $ ssh elmo@192.168.1.107
+
+![scrshot6](../images/scrshot006.png)
+
+Pääsin orja-koneelle! Lähdin tutkimaan OpenTTD:n tiedostoja, jos niissä olisi jotain, jonka voisi lisätä OpenTTD:n tilaan. Pienen etsiskelyn jälkeen en kuitenkaan löytänyt mitään kummoisempia config-tiedostoja tai vastaavia, vaikka olin suhteellisen varma, että peli loisi sellaiset asentuessaan.
+
+Löysin netistä keskustelun, jossa config-tiedoston poissaolo oltiin yhdistetty pelin asennukseen root-oikeuksilla. (linkki tähän) Päätin kokeilla ehdotettua ratkaisua.
 
 
 
