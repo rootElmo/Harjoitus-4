@@ -58,17 +58,17 @@ Sain loppujen lopuksi SSH-yhteyden orja-koneeseen. Asensin openssh-clientin orja
 
 	slave $ which ssh
 
-tulostaa terminaali ylensä jotain ja näin ollen SSH-yhteyden saamisen pitäisi onnistua. Poistin openssh-clientin orja-koneelta
+tulostaa terminaali ylensä jotain ja näin ollen SSH-yhteyden saamisen pitäisi onnistua. Poistin openssh-serverin orja-koneelta
 
-	slave $ sudo apt-get purge openssh-client
+	slave $ sudo apt-get purge openssh-server
 
-ja päätin tehdä openssh-clientin asennuksesta oman tilan herrakoneella.
+ja päätin tehdä openssh-serverin asennuksesta oman tilan herrakoneella.
 
 Prosessi meni aluksi hyvin pitkälti samalla tavalla, kuin OpenTTD:tä asennettaessa. Tällä kertaa _init.sls_ sijaitsi vain kansiossa **/srv/salt/openssh**.
 
 init.sls:
 
-	openssh-client:
+	openssh-server:
 	  pkg.installed
 
 Seuraavaksi ajoin tilan aktiiviseksi:
@@ -78,6 +78,8 @@ Seuraavaksi ajoin tilan aktiiviseksi:
 Tila aktivoitui onnistuneesti!
 
 ![scrshot5](../images/scrshot005.png)
+
+
 
 ## Lähteet
 
