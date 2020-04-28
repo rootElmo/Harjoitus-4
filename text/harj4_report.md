@@ -135,7 +135,7 @@ Ajoin tilan aktiiviseksi ja salt ilmoitti onnistumisesta!
 
 Kävin SSH-yhteydellä orja-koneella, kansio ***~/.openttd*** löytyi, mutta mitään ei ollut sen sisällä. Pienen dokumentaation lueskelun jälkeen tajusin, että minun olisi käytettävä **file.recurse**:a, jotta kansion sisältökin kopioituisi. Sain myös virheilmoituksen, kun muutin **file.recurse**:n suoraan **file.directory**:n tilalle sls-tiedostossa.
 
-![scrshot9](..images/scrshot009.png)
+![scrshot9](../images/scrshot009.png)
 
 Tein tarvittavat muutokset tilaan, ja ajoin sen onnistuneesti!
 
@@ -151,6 +151,26 @@ init.sls:
 	    - group: elmo
 	    - dir_mode: 775
 	    - file_mode: 775
+
+![scrshot10](../images/scrshot010.png)
+
+Huomasin kuitenkin SSH:lla orja-koneella seikkaillessani, että käyttäjän "elmo" _home_-kansiosta löytyi **.config**-kansio, joka sisälsi myös OpenTTD:n config-tiedoston. En ollut varma olinko vain epähuomiossa mennyt tämän ohi, vai loiko kansio itsensä kun yritin aikaisemmin käydä käsin käynnistämässä OpenTTD:n.
+
+Paljon työtä turhan takia, mutta opinpahan jotain ja nyt meillä on se kaivattu config-tiedosto.
+
+Kävin noutamassa sftp:llä _openttd.cfg_-tiedoston orja-koneel _~/.config/openttd/_-kansiosta itselleni. Muutin samalla hieman _init.sls_-tiedostoa hieman mm. niin, että käyttäjällä elmo olisi luku- ja kirjoitusoikeus siihen. Näin peliä pystyisi pelaamaan ja asetuksia tekemään ilman sudo-oikeuksia.
+
+	openttd:
+	  pkg.installed
+	
+	/home/elmo/.config/openttd/openttd.cfg:
+	  file.managed:
+	    - source: salt://openttd/openttd.cfg
+	    - user: elmo
+	    - group: elmo
+	    - mode: 664
+
+Ajon tilan aktiiviseksi ja salt ilmoitti onnistumisesta. Seuraavaksi teen muutoksen _openttd.cfg_-tiedostoon herra-koneella ja ajan tilan uudestaan. Salt ilmoitti, että muutos tiedostoon on tapahtunut ja että muutos on viety onnistuneesti orja-koneelle. Muutin _openttd.cfg_-tiedostosta kohdan **fullscreen = false** muotoon **fullscreen = true**.
 
 
 
