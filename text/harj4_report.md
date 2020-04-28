@@ -42,6 +42,15 @@ Salt kertoo muutoksen onnistuneen
 
 ![scrshot3](../images/scrshot003.png)
 
+En ollut aivan varma siitä, mihin OpenTTD luo tiedostonsa asennuksen yhteydessä, joten ajoin seuraavan komennon:
+
+	sudo salt 'e006' cmd.run 'find / -printf "%T+ %p\n" | sort | grep openttd'
+
+Pitkähköstä tulosteesta selvisi, että iso määrä tiedostoja oli luotu kohteeseen **/usr/share/games/openttd**. Tässä vaiheessa avaisin SSH-yhteyden orja-koneeseen, mutta aikaisemmista yrityksistäni huolimatta en ole saanut SSH:lla yhteyttä oman koneeni ulkopuolisiin koneisiin, jotka ovat samassa verkossa. Oletan vian olevan asuntoni reitittimessä.
+
+Emuloin SSH:ta käymällä katselemassa pöytäkoneeltani käsin orja-koneen kansioita.
+
+
 ## Lähteet
 
 Tero Karvinen: terokarvinen.com/2020/configuration-managment-systems-palvelinten-hallinta-ict4tn022-spring-2020/
