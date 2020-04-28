@@ -29,6 +29,19 @@ Loin uuden kansion "**openttd**" kansioon **/srv/salt**, ja loin init.sls tiedos
 
 ![scrshot2](../images/scrshot002.png)
 
+Muokkasin init.sls:n seuraavaan tilaan:
+
+	openttd:
+	  pkg.installed
+
+Ajoin tilan aktiiviseksi orja-koneelle:
+
+	master $ sudo salt 'e006' state.apply openttd
+
+Salt kertoo muutoksen onnistuneen
+
+![scrshot3](../images/scrshot003.png)
+
 ## Lähteet
 
 Tero Karvinen: terokarvinen.com/2020/configuration-managment-systems-palvelinten-hallinta-ict4tn022-spring-2020/
