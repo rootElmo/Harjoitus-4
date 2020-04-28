@@ -88,9 +88,28 @@ Seuraavaksi pyysin orja-koneen IP-osoitteen saltin kautta ja yritin SSH-yhteytt�
 
 Pääsin orja-koneelle! Lähdin tutkimaan OpenTTD:n tiedostoja, jos niissä olisi jotain, jonka voisi lisätä OpenTTD:n tilaan. Pienen etsiskelyn jälkeen en kuitenkaan löytänyt mitään kummoisempia config-tiedostoja tai vastaavia, vaikka olin suhteellisen varma, että peli loisi sellaiset asentuessaan.
 
-Löysin netistä keskustelun, jossa config-tiedoston poissaolo oltiin yhdistetty pelin asennukseen root-oikeuksilla. [Linkki keskusteluun](https://www.tt-forums.net/viewtopic.php?t=71557) Päätin kokeilla ehdotettua ratkaisua.
+Löysin netistä keskustelun, jossa config-tiedoston poissaolo oltiin yhdistetty pelin asennukseen root-oikeuksilla. [Linkki keskusteluun](https://www.tt-forums.net/viewtopic.php?t=71557). Päätin kokeilla ehdotettua ratkaisua.
 
+Lisäsin openttd-tilan _init.sls_-tiedostoon pari riviä
 
+	openttd:
+	  pkg.installed
+
+	/home/elmo/.openttd/openttd.cfg:
+	  file.managed:
+	    - source: salt://openttd/config.cfg
+
+Yritin ajaa tilan aktiiviseksi komennolla
+
+	master $ sudo salt 'e006' state.apply openttd
+
+mutta sain virheilmoituksen, sillä en ollut luonut kopioitavaa tiedostoa mihinkään. Loin nopeasti uuden tyhjän tiedoston, kuten linkkaamassani keskustelussa oltiin ehdotettu.
+
+	master:/srv/salt/openttd $ sudo touch config.cfg
+
+Yritin ajaa tilaa aktiiviseksi uudestaan. Sain virheilmoituksen, sillä orja-koneella ei ole olemassa kansiota ***"~/.openttd"***.
+
+![scrshot7](../images/scrshot007.png)
 
 ## Lähteet
 
