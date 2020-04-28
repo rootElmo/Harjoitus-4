@@ -200,6 +200,28 @@ ja salt ilmoitti onnistumisesta!
 
 ![scrshot11](../images/scrshot011.png)
 
+Tein seuraavanlaiset muutokset _init.sls_-tiedostoon ja ajoin tilan aktiiviseksi.
+
+init.sls:
+
+	openssh-server:
+	  pkg.installed
+	
+	/etc/ssh/sshd_config:
+	  file.managed:
+	    - source: salt://openssh/sshd_config
+	
+	sshd.service:
+	  service.running:
+	    - watch:
+	      - file: /etc/ssh/sshd_config
+
+Sain kuitenkin virheilmoituksen ja [internetissä lueskelun]() jälkeen sain ymmärtää, että sshd_config-tiedostossa olisi jotain häikkää.
+
+![scrshot12](../images/scrshot012.png)
+
+Päätin jättää openssh:n työstön tältä osin tähän.
+
 ## Lähteet
 
 Tero Karvinen: http://terokarvinen.com/2020/configuration-managment-systems-palvelinten-hallinta-ict4tn022-spring-2020/
