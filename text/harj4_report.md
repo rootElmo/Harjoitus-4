@@ -88,7 +88,7 @@ Seuraavaksi pyysin orja-koneen IP-osoitteen saltin kautta ja yritin SSH-yhteytt�
 
 Pääsin orja-koneelle! Lähdin tutkimaan OpenTTD:n tiedostoja, jos niissä olisi jotain, jonka voisi lisätä OpenTTD:n tilaan. Pienen etsiskelyn jälkeen en kuitenkaan löytänyt mitään kummoisempia config-tiedostoja tai vastaavia, vaikka olin suhteellisen varma, että peli loisi sellaiset asentuessaan.
 
-Löysin netistä keskustelun, jossa config-tiedoston poissaolo oltiin yhdistetty pelin asennukseen root-oikeuksilla. (linkki tähän) Päätin kokeilla ehdotettua ratkaisua.
+Löysin netistä keskustelun, jossa config-tiedoston poissaolo oltiin yhdistetty pelin asennukseen root-oikeuksilla. [](Linkki keskusteluun) Päätin kokeilla ehdotettua ratkaisua.
 
 
 
