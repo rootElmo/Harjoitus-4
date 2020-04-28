@@ -115,8 +115,8 @@ Ajattelin, että voisin luoda tuon kansion tilaan, ja puskea sen orja-koneelle c
 
 Tein seuraavaksi muutoksia _init.sls_-tiedostoon:
 
-openttd:
-  pkg.installed
+	openttd:
+	  pkg.installed
 
 /home/elmo/.openttd/:
   file.directory:
