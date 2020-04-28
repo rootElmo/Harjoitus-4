@@ -52,7 +52,18 @@ En ollut aivan varma siitä, mihin OpenTTD luo tiedostonsa asennuksen yhteydess�
 
 *Emuloin SSH:ta käymällä katselemassa pöytäkoneeltani käsin orja-koneen kansioita.*
 
+Sain loppujen lopuksi SSH-yhteyden orja-koneeseen. Asensin openssh-clientin orjakoneelle käsin ja kokeilin herra-koneelta kirjautumista, joka toimi. Olin olettanut, että kun komennolla
+
+	slave $ which ssh
+
+tulostaa terminaali ylensä jotain ja näin ollen SSH-yhteyden saamisen pitäisi onnistua. Poistin openssh-clientin orja-koneelta
+
+	slave $ sudo apt-get purge openssh-client
+
+ja päätin tehdä openssh-clientin asennuksesta oman tilan herrakoneella.
 
 ## Lähteet
 
 Tero Karvinen: terokarvinen.com/2020/configuration-managment-systems-palvelinten-hallinta-ict4tn022-spring-2020/
+
+ask ubuntu (SSH ongelmaa etsiessä): https://askubuntu.com/questions/218344/why-am-i-getting-a-port-22-connection-refused-error
