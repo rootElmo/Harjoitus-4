@@ -13,6 +13,8 @@ Saltille saapui vastaus:
 	e006:
 		root
 
+## OpenTTD-modulin luominen
+
 Seuraavaksi tarvitsi valita jokin ohjelma asennettavaksi. Olen asentanut omalle koneelleni joskus muinoin OpenTTD-pelin, joka on avoimen Transport Tycoon-peliin perustuva avoimen lähdekoodin uudelleenkirjoitus. Muistan kuitenkin, että asensin sen silloin käsin ja että se ei ollut hirveän intuitiivinen prosessi.
 
 Kokeilin ajaa seuraavan komennon katsoakseni, voisiko OpenTTD:n asnetaa apt-getin kautta:
@@ -53,6 +55,8 @@ En ollut aivan varma siitä, mihin OpenTTD luo tiedostonsa asennuksen yhteydess�
 *Pitkähköstä tulosteesta selvisi, että iso määrä tiedostoja oli luotu kohteeseen* ***/usr/share/games/openttd***. *Tässä vaiheessa avaisin SSH-yhteyden orja-koneeseen, mutta aikaisemmista yrityksistäni huolimatta en ole saanut SSH:lla yhteyttä oman koneeni ulkopuolisiin koneisiin, jotka ovat samassa verkossa. Oletan vian olevan asuntoni reitittimessä.*
 
 *Emuloin SSH:ta käymällä katselemassa pöytäkoneeltani käsin orja-koneen kansioita.*
+
+## openssh-serverin asennus
 
 Sain loppujen lopuksi SSH-yhteyden orja-koneeseen. Asensin openssh-serverin orjakoneelle käsin ja kokeilin herra-koneelta kirjautumista, joka toimi. Olin olettanut, että kun komennolla
 
@@ -154,6 +158,8 @@ init.sls:
 
 ![scrshot10](../images/scrshot010.png)
 
+## OpenTTD-modulin päättäminen
+
 Huomasin kuitenkin SSH:lla orja-koneella seikkaillessani, että käyttäjän "elmo" _home_-kansiosta löytyi **.config**-kansio, joka sisälsi myös OpenTTD:n config-tiedoston. En ollut varma olinko vain epähuomiossa mennyt tämän ohi, vai loiko kansio itsensä kun yritin aikaisemmin käydä käsin käynnistämässä OpenTTD:n.
 
 Paljon työtä turhan takia, mutta opinpahan jotain ja nyt meillä on se kaivattu config-tiedosto.
@@ -171,6 +177,8 @@ Kävin noutamassa sftp:llä _openttd.cfg_-tiedoston orja-koneel _~/.config/opent
 	    - mode: 664
 
 Ajon tilan aktiiviseksi ja salt ilmoitti onnistumisesta. Seuraavaksi teen muutoksen _openttd.cfg_-tiedostoon herra-koneella ja ajan tilan uudestaan. Salt ilmoitti, että muutos tiedostoon on tapahtunut ja että muutos on viety onnistuneesti orja-koneelle. Muutin _openttd.cfg_-tiedostosta kohdan **fullscreen = false** muotoon **fullscreen = true**.
+
+## openssh:n säätämistä
 
 Seuraavaksi etsin openssh-serverin config-tiedoston mahdollista sijaintia
 
