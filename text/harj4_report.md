@@ -216,7 +216,7 @@ init.sls:
 	    - watch:
 	      - file: /etc/ssh/sshd_config
 
-Sain kuitenkin virheilmoituksen ja [internetissä lueskelun]() jälkeen sain ymmärtää, että sshd_config-tiedostossa olisi jotain häikkää.
+Sain kuitenkin virheilmoituksen ja [internetissä lueskelun](https://superuser.com/questions/1122125/cannot-restart-ssh-daemon-after-changing-sshd-config-to-port-2222) jälkeen sain ymmärtää, että sshd_config-tiedostossa olisi jotain häikkää.
 
 ![scrshot12](../images/scrshot012.png)
 
@@ -227,5 +227,7 @@ Päätin jättää openssh:n työstön tältä osin tähän.
 Tero Karvinen: http://terokarvinen.com/2020/configuration-managment-systems-palvelinten-hallinta-ict4tn022-spring-2020/
 
 ask ubuntu (SSH ongelmaa etsiessä): https://askubuntu.com/questions/218344/why-am-i-getting-a-port-22-connection-refused-error
+
+StackExchange (sshd_configin vianetsintää): https://superuser.com/questions/1122125/cannot-restart-ssh-daemon-after-changing-sshd-config-to-port-2222
 
 SALTSTACK: https://docs.saltstack.com/en/latest/ref/states/all/salt.states.file.html
