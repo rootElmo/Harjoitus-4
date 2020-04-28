@@ -13,6 +13,16 @@ Saltille saapui vastaus:
 	e006:
 		root
 
+Seuraavaksi tarvitsi valita jokin ohjelma asennettavaksi. Olen asentanut omalle koneelleni joskus muinoin OpenTTD-pelin, joka on avoimen Transport Tycoon-peliin perustuva avoimen lähdekoodin uudelleenkirjoitus. Muistan kuitenkin, että asensin sen silloin käsin ja että se ei ollut hirveän intuitiivinen prosessi.
+
+Kokeilin ajaa seuraavan komennon katsoakseni, voisiko OpenTTD:n asnetaa apt-getin kautta:
+
+	master $ apt-cache search openttd
+
+Kuinka ollakkaan, kyseinen paketti löytyi!
+
+![scrshot1](../images/scrshot001.png)
+
 
 
 ## Lähteet
