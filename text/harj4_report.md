@@ -117,17 +117,17 @@ Tein seuraavaksi muutoksia _init.sls_-tiedostoon:
 
 	openttd:
 	  pkg.installed
-
-/home/elmo/.openttd/:
-  file.directory:
-    - source: salt://openttd/config
-    - user: elmo
-    - group: elmo
-    - mode: 775
-    - recurse:
-      - user
-      - group
-      - mode
+	
+	/home/elmo/.openttd/:
+	  file.directory:
+	    - source: salt://openttd/config
+	    - user: elmo
+	    - group: elmo
+	    - mode: 775
+	    - recurse:
+	      - user
+	      - group
+	      - mode
 
 Ajoin tilan aktiiviseksi ja salt ilmoitti onnistumisesta!
 
