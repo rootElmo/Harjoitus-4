@@ -111,8 +111,14 @@ Yritin ajaa tilaa aktiiviseksi uudestaan. Sain virheilmoituksen, sillä orja-kon
 
 ![scrshot7](../images/scrshot007.png)
 
+Ajattelin, että voisin luoda tuon kansion tilaan, ja puskea sen orja-koneelle config-tiedostoineen. Lueskelin [saltstacking dokumentaatiota](https://docs.saltstack.com/en/latest/ref/states/all/salt.states.file.html) ja löysinkin sieltä tarvitsemani.
+
+Tein seuraavaksi muutoksia _init.sls_-tiedostoon:
+
 ## Lähteet
 
-Tero Karvinen: terokarvinen.com/2020/configuration-managment-systems-palvelinten-hallinta-ict4tn022-spring-2020/
+Tero Karvinen: http://terokarvinen.com/2020/configuration-managment-systems-palvelinten-hallinta-ict4tn022-spring-2020/
 
 ask ubuntu (SSH ongelmaa etsiessä): https://askubuntu.com/questions/218344/why-am-i-getting-a-port-22-connection-refused-error
+
+SALTSTACK: https://docs.saltstack.com/en/latest/ref/states/all/salt.states.file.html
